@@ -14,7 +14,7 @@ public class FirstLabService {
         for (int i = 0; i < matrix.size(); i++) {
             List<String> row = matrix.get(i);
 
-            int sequenceSize = 0;
+            int sequenceSize = 1;
             int maxSequencePerRow = 0;
             String prevElement = row.get(0);
             for (int j = 1; j < row.size(); j++) {
@@ -24,10 +24,14 @@ public class FirstLabService {
                     if (sequenceSize > maxSequencePerRow) {
                         maxSequencePerRow = sequenceSize;
                     }
-                    sequenceSize = 0;
+                    sequenceSize = 1;
                 }
                 prevElement = row.get(j);
             }
+            if (sequenceSize > maxSequencePerRow) {
+                maxSequencePerRow = sequenceSize;
+            }
+
             if (maxSequencePerRow > maxSequencePerMatrix) {
                 maxSequencePerMatrix = maxSequencePerRow;
                 rowWithMaxElements = i;
