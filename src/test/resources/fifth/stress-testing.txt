@@ -1,0 +1,2 @@
+ siege -b -c10 -t60S http://example.com/
+ ab -n 100 -c 10 http://example.com/
