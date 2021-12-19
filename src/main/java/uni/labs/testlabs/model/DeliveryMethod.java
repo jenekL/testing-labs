@@ -1,4 +1,6 @@
 package uni.labs.testlabs.model;
 
-public class DeliveryMethod {
+public enum DeliveryMethod {
+    COURIER,
+    POST
 }
