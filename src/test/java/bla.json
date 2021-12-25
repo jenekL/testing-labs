@@ -1,0 +1,21 @@
+[
+  {
+    "companyName": "Company",
+    "firstName": "John",
+    "lastName": "Doe",
+    "fathersName": "Ivanovich",
+    "bankAccountNumber": 123321123321,
+    "phone": "+38066123321",
+    "fax": "+38066123322",
+    "price": 350,
+    "deliveryMethod": "COURIER"
+  },
+  {
+    "id": 1,
+    "supplierId": 2,
+    "type": "T_SHIRTS",
+    "mark": "Gussi",
+    "delay": 2,
+    "price": 330
+  }
+]

@@ -36,7 +36,7 @@ public class FifthLabService {
     @Autowired
     private SupplyMapper supplyMapper;
 
-    @PostConstruct
+//    @PostConstruct
     public void init() {
 
         Random random = new Random();

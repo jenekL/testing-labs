@@ -32,7 +32,7 @@ create table supplies
     id         integer unique not null primary key GENERATED ALWAYS AS IDENTITY,
     type       integer,
     mark       varchar(100),
-    delay_time integer CHECK (price > 0),
+    delay_time integer CHECK (delay_time > 0),
     price      float CHECK (price > 0),
     CONSTRAINT fk_method
         FOREIGN KEY (type)

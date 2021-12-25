@@ -23,7 +23,49 @@ public class ThirdLabTest {
     private ThirdLabService thirdLabService;
 
     @Test
-    @Order(1)
+    @Order(3)
+    public void shouldAddWorkerWithInvalidName() {
+        // given
+        ThirdLabService.Worker worker = new ThirdLabService.Worker();
+        worker.setLastname("Doe1");
+        worker.setBirthDate(LocalDate.of(1990, 10, 20));
+        worker.setPhoneNumber("+38066123451");
+
+        // when
+        // then
+        Assertions.assertThrows(IllegalArgumentException.class, () -> thirdLabService.add(worker));
+    }
+
+    @Test
+    @Order(3)
+    public void shouldAddWorkerWithInvalidPhone() {
+        // given
+        ThirdLabService.Worker worker = new ThirdLabService.Worker();
+        worker.setLastname("Doe");
+        worker.setBirthDate(LocalDate.of(1990, 10, 20));
+        worker.setPhoneNumber("+38066123451a");
+
+        // when
+        // then
+        Assertions.assertThrows(IllegalArgumentException.class, () -> thirdLabService.add(worker));
+    }
+
+    @Test
+    @Order(3)
+    public void shouldAddWorkerWithInvalidDate() {
+        // given
+        ThirdLabService.Worker worker = new ThirdLabService.Worker();
+        worker.setLastname("Doe");
+        worker.setBirthDate(LocalDate.of(2030, 10, 20));
+        worker.setPhoneNumber("+38066123451");
+
+        // when
+        // then
+        Assertions.assertThrows(IllegalArgumentException.class, () -> thirdLabService.add(worker));
+    }
+
+    @Test
+    @Order(4)
     public void shouldAddFirstWorker() {
         // given
         ThirdLabService.Worker worker = new ThirdLabService.Worker();
@@ -39,7 +81,7 @@ public class ThirdLabTest {
     }
 
     @Test
-    @Order(2)
+    @Order(4)
     public void shouldAddSecondWorker() {
         // given
         ThirdLabService.Worker worker = new ThirdLabService.Worker();
@@ -55,7 +97,7 @@ public class ThirdLabTest {
     }
 
     @Test
-    @Order(3)
+    @Order(4)
     public void shouldAddThirdWorker() {
         // given
         ThirdLabService.Worker worker = new ThirdLabService.Worker();
@@ -113,7 +155,7 @@ public class ThirdLabTest {
     }
 
     @Test
-    @Order(7)
+    @Order(6)
     public void shouldFindByBirthDate() {
         // given
         LocalDate workerBirthDate = LocalDate.of(1987, 10, 20);
@@ -127,7 +169,7 @@ public class ThirdLabTest {
     }
 
     @Test
-    @Order(8)
+    @Order(6)
     public void shouldFindByPhone() {
         // given
         String workerPhone = "+38066123452";
@@ -141,7 +183,72 @@ public class ThirdLabTest {
     }
 
     @Test
-    @Order(9)
+    @Order(6)
+    public void shouldFindByNotExistingName() {
+        // given
+        String workerLastname = "Perepechko";
+
+        // when
+        List<ThirdLabService.Worker> workers = thirdLabService.findByName(workerLastname);
+
+        // then
+        Assertions.assertEquals(0, workers.size());
+    }
+
+    @Test
+    @Order(6)
+    public void shouldFindByNameWithDigits() {
+        // given
+        String workerLastname = "Perepechko123";
+
+        // when
+        List<ThirdLabService.Worker> workers = thirdLabService.findByName(workerLastname);
+
+        // then
+        Assertions.assertEquals(0, workers.size());
+    }
+
+    @Test
+    @Order(6)
+    public void shouldFindByNotExistingBirthDate() {
+        // given
+        LocalDate workerBirthDate = LocalDate.of(1987, 10, 30);
+
+        // when
+        List<ThirdLabService.Worker> workers = thirdLabService.findByBirthDate(workerBirthDate);
+
+        // then
+        Assertions.assertEquals(0, workers.size());
+    }
+
+    @Test
+    @Order(6)
+    public void shouldFindByNotExistingPhone() {
+        // given
+        String workerPhone = "+38066844343";
+
+        // when
+        List<ThirdLabService.Worker> workers = thirdLabService.findByPhoneNumber(workerPhone);
+
+        // then
+        Assertions.assertEquals(0, workers.size());
+    }
+
+    @Test
+    @Order(6)
+    public void shouldFindByPhoneWithWords() {
+        // given
+        String workerPhone = "+38066844343aaa";
+
+        // when
+        List<ThirdLabService.Worker> workers = thirdLabService.findByPhoneNumber(workerPhone);
+
+        // then
+        Assertions.assertEquals(0, workers.size());
+    }
+
+    @Test
+    @Order(7)
     public void shouldSortByName() {
         // given
         // when
@@ -155,7 +262,7 @@ public class ThirdLabTest {
     }
 
     @Test
-    @Order(10)
+    @Order(7)
     public void shouldSortByBirthDate() {
         // given
         // when
@@ -169,7 +276,7 @@ public class ThirdLabTest {
     }
 
     @Test
-    @Order(11)
+    @Order(7)
     public void shouldSortByPhone() {
         // given
         // when
@@ -181,5 +288,4 @@ public class ThirdLabTest {
         Assertions.assertEquals("Smith", workers.get(1).getLastname());
         Assertions.assertEquals("Ivanov", workers.get(2).getLastname());
     }
-
 }

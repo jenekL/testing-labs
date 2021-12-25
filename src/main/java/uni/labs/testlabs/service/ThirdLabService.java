@@ -17,6 +17,18 @@ public class ThirdLabService {
     private final AtomicReference<List<Worker>> workers = new AtomicReference<>(new ArrayList<>());
 
     public Worker add(Worker worker) {
+        if (!worker.getBirthDate().isBefore(LocalDate.now())) {
+            throw new IllegalArgumentException("Birthdate needs to be in the past");
+        }
+
+        if (worker.getLastname().matches(".*\\d.*")) {
+            throw new IllegalArgumentException("Lastname can not contain digits");
+        }
+
+        if (worker.getPhoneNumber().matches(".*\\w.*")) {
+            throw new IllegalArgumentException("Phone number can not contain words");
+        }
+
         worker.setId(UUID.randomUUID());
         workers.get().add(worker);
 

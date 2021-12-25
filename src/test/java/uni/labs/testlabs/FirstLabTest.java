@@ -39,8 +39,7 @@ public class FirstLabTest {
         int rowWithBiggestElementSequence = firstLabService.getRowWithBiggestElementSequence(matrix);
 
         // then
-        logService.appendLogMessage(String.format(LOG_MESSAGE, fileContent, rowWithBiggestElementSequence));
-
+        logService.appendLogMessage(String.format(LOG_MESSAGE, fileContent, rowWithBiggestElementSequence + 1));
     }
 
 }
