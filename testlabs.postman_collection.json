@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "3a6e5781-f92f-48b9-b8a6-0e677feee1d2",
+		"name": "testlabs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all suppliers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/suppliers",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"suppliers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add supplier",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"companyName\": \"Company\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"fathersName\": \"Ivanovich\",\n    \"bankAccountNumber\": 123321123321,\n    \"phone\": \"38066123321\",\n    \"fax\": \"+38066123322\",\n    \"price\": 350,\n    \"deliveryMethod\": \"qwe\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/suppliers",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"suppliers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update supplier",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 100,\n    \"companyName\": \"Company\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"fathersName\": \"Ivanovich\",\n    \"bankAccountNumber\": 123321123321,\n    \"phone\": \"+38066123321\",\n    \"fax\": \"+38066123322\",\n    \"price\": 350,\n    \"deliveryMethod\": \"COURIER\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/suppliers",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"suppliers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete supplier",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/suppliers/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"suppliers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add supply",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"supplierId\": 1,\n \"type\": \"T_SHIRTS1\",\n \"mark\": \"Gussi\",\n \"delay\": 2,\n \"price\": 330\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/supplies",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"supplies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete supply",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/supplies/10",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"supplies",
+						"10"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
