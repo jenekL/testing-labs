@@ -9,6 +9,10 @@ public class FirstLabService {
 
     public int getRowWithBiggestElementSequence(List<List<String>> matrix) {
 
+        if(matrix.isEmpty() || matrix.stream().allMatch(List::isEmpty)) {
+            throw new IllegalArgumentException("Can not be empty");
+        }
+
         int maxSequencePerMatrix = 0;
         int rowWithMaxElements = 0;
         for (int i = 0; i < matrix.size(); i++) {

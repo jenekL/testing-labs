@@ -18,6 +18,8 @@ import uni.labs.testlabs.dto.PageResponse;
 import uni.labs.testlabs.dto.SupplierInfo;
 import uni.labs.testlabs.service.FifthLabService;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("suppliers")
 public class SupplierController {
@@ -40,12 +42,12 @@ public class SupplierController {
     }
 
     @PostMapping
-    public ResponseEntity<?> addSupplier(@RequestBody SupplierInfo supplierInfo) {
+    public ResponseEntity<?> addSupplier(@Valid @RequestBody SupplierInfo supplierInfo) {
         return ResponseEntity.ok(fifthLabService.addSupplier(supplierInfo));
     }
 
     @PutMapping
-    public ResponseEntity<?> updateSupplier(@RequestBody SupplierInfo supplierInfo) {
+    public ResponseEntity<?> updateSupplier(@Valid @RequestBody SupplierInfo supplierInfo) {
         return ResponseEntity.ok(fifthLabService.updateSupplier(supplierInfo));
     }
 

@@ -11,11 +11,11 @@ create table suppliers
     first_name          varchar(50) CHECK (length(first_name) > 0),
     last_name           varchar(50) CHECK (length(last_name) > 0),
     fathers_name        varchar(50) CHECK (length(fathers_name) > 0),
-    bank_account_number integer,
+    bank_account_number integer not null,
     phone               varchar(15) CHECK (length(phone) > 0),
     fax                 varchar(15) CHECK (length(fax) > 0),
     price               float CHECK (price > 0),
-    method              integer,
+    method              integer not null,
     CONSTRAINT fk_method
         FOREIGN KEY (method)
             REFERENCES delivery_methods (id)
@@ -30,8 +30,8 @@ create table supply_types
 create table supplies
 (
     id         integer unique not null primary key GENERATED ALWAYS AS IDENTITY,
-    type       integer,
-    mark       varchar(100),
+    type       integer not null,
+    mark       varchar(100) not null,
     delay_time integer CHECK (delay_time > 0),
     price      float CHECK (price > 0),
     CONSTRAINT fk_method

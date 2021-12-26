@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import uni.labs.testlabs.dto.SupplyInfo;
 import uni.labs.testlabs.service.FifthLabService;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("supplies")
 public class SupplyController {
@@ -19,7 +21,7 @@ public class SupplyController {
     private FifthLabService fifthLabService;
 
     @PostMapping
-    public ResponseEntity<?> addSupply(@RequestBody SupplyInfo supplyInfo) {
+    public ResponseEntity<?> addSupply(@Valid @RequestBody SupplyInfo supplyInfo) {
         return ResponseEntity.ok(fifthLabService.addSupplyToSupplier(supplyInfo));
     }
 
