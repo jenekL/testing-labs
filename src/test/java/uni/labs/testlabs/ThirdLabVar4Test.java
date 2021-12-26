@@ -107,6 +107,28 @@ class ThirdLabVar4Test {
 	}
 
 	@Test
+	public void shouldDeleteNodeElementWithMultipleChildrenAndNotFullParent() {
+		// given
+		TreeNode<String> root = new TreeNode<>("1");
+		TreeNode<String> node1 = root.addChild(new TreeNode<>("1"));
+		TreeNode<String> node11 = node1.addChild(new TreeNode<>("11"));
+		TreeNode<String> node12 = node1.addChild(new TreeNode<>("12"));
+		TreeNode<String> node2 = root.addChild(new TreeNode<>("2"));
+		TreeNode<String> node3 = root.addChild(new TreeNode<>("3"));
+		TreeNode<String> node4 = root.addChild(new TreeNode<>("4"));
+		TreeNode<String> node5 = root.addChild(new TreeNode<>("5"));
+		TreeNode<String> node6 = root.addChild(new TreeNode<>("6"));
+		TreeNode<String> node7 = root.addChild(new TreeNode<>("7"));
+
+		// when
+		node1.deleteNode();
+
+		// then
+		Assertions.assertEquals(root, node11.getParent());
+		Assertions.assertEquals(root, node12.getParent());
+	}
+
+	@Test
 	public void shouldDeleteLeafElementWithNotFullParent() {
 		// given
 		TreeNode<String> root = new TreeNode<>("1");

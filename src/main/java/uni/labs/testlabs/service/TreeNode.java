@@ -77,7 +77,7 @@ public class TreeNode<T> { //var4
 
     public void deleteNode() {
         if (parent != null) {
-            if (children.size() > 1 && parent.getChildren().size() == 8) {
+            if (children.size() + (parent.getChildren().size() - 1) > 8) {
                 throw new IllegalStateException("Can not delete node because its parent node is full");
             }
 
